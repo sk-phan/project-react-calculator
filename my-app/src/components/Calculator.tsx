@@ -3,16 +3,21 @@ import React, { useEffect, useState } from "react";
 
 const Calculator = () => {
     const [ result, setResult ] = useState<number>(0);
-
-    let total: number[] = [];
+    const [ total, setTotal ] = useState<any>([]);
 
     const onCalculate = (num: any) => {
-        total.push(num);
-        if (typeof total[total.length - 1] === "number") {
-            console.log(eval(total.join("")), "total")
-        }
+        
+        setTotal([...total, num])
         
     }
+
+    useEffect(() => {
+        if (typeof total[total.length - 1] === "number") {
+            let res = eval(total.join(""))
+            setResult(res)
+        }
+        
+    }, [total])
 
     const getResult = () => {
 
@@ -43,10 +48,10 @@ const Calculator = () => {
             <button onClick={() => onCalculate('+')}> + </button>
             <button onClick={() => onCalculate('-')}> - </button>
             <button onClick={() => onCalculate('*')}> * </button>
-            <button> / </button>
+            <button onClick={() => onCalculate('/')}> / </button>
 
             <button> = </button>
-            <button> . </button>
+            <button onClick={() => onCalculate('.')}> . </button>
             <button> del </button>
             <button> reset </button>
         </div>
