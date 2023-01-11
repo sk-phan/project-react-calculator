@@ -8,27 +8,38 @@ const Calculator = () => {
     const onCalculate = (num: any) => {
         
         setTotal([...total, num])
+        console.log(total)
         
     }
 
     useEffect(() => {
         if (typeof total[total.length - 1] === "number") {
+            
             let res = eval(total.join(""))
+            
             setResult(res)
         }
         
     }, [total])
 
-    const getResult = () => {
-
-    }
-
     const del = () => {
-
+        if (typeof total[total.length - 1] === "number") {
+            
+         const currentNums = total.map((item: number, index: number) => {
+            if (index === total.length - 1) {
+                return 0
+            }
+            else return item
+         });
+         setTotal(currentNums);
+        console.log(currentNums)
+        
+    }
     }
 
     const reset = () => {
-
+        setTotal([])
+        setResult(0)
     }
 
    
@@ -52,8 +63,8 @@ const Calculator = () => {
 
             <button> = </button>
             <button onClick={() => onCalculate('.')}> . </button>
-            <button> del </button>
-            <button> reset </button>
+            <button onClick={() => del()}> del </button>
+            <button onClick={() => reset()}> reset </button>
         </div>
     )
 }
