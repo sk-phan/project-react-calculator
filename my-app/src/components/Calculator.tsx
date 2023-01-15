@@ -42,29 +42,37 @@ const Calculator = () => {
         setResult(0)
     }
 
-   
-    
-
     return (
-        <div>  
-            <span> { result } </span>
+        <div className=" d-flex flex-column bg-primary p-4 rounded">  
+            <div className="bg-white p-4 mb-4 rounded"> { result } </div>
 
-            <button onClick={() => onCalculate(0)}> 0 </button>
-            <button onClick={() => onCalculate(1)}> 1 </button>
-            <button onClick={() => onCalculate(2)}> 2 </button>
-            <button onClick={() => onCalculate(3)}> 3 </button>
-            <button onClick={() => onCalculate(4)}> 4 </button>
-            <button onClick={() => onCalculate(5)}> 5 </button>
+            <div className="row mb-2">
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(7)}> 7 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(8)}> 8 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(9)}> 9 </button>
+                <button className="col mx-2 btn btn-lg bg-white" onClick={() => onCalculate('*')}> * </button>
+            </div>
 
-            <button onClick={() => onCalculate('+')}> + </button>
-            <button onClick={() => onCalculate('-')}> - </button>
-            <button onClick={() => onCalculate('*')}> * </button>
-            <button onClick={() => onCalculate('/')}> / </button>
+            <div className="row mb-2">
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(4)}> 4 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(5)}> 5 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(6)}> 6 </button>
+                <button className="col mx-2 btn btn-lg bg-white" onClick={() => onCalculate('-')}> - </button>
+            </div>
 
-            <button> = </button>
-            <button onClick={() => onCalculate('.')}> . </button>
-            <button onClick={() => del()}> del </button>
-            <button onClick={() => reset()}> reset </button>
+            <div className="row mb-2">
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(1)}> 1 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(2)}> 2 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(3)}> 3 </button>
+                <button className="col mx-2 btn btn-lg bg-white" onClick={() => onCalculate('+')}> + </button>
+            </div>
+
+            <div className="row mb-2">
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => del()}> C </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(0)}> 0 </button>
+                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate('.')}> . </button>
+                <button className="col mx-2 btn btn-lg bg-white" onClick={() => setResult(result)}> = </button>
+            </div>
         </div>
     )
 }

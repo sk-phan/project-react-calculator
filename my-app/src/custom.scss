@@ -1,0 +1,15 @@
+$primary: #3366FF;
+$secondary: #fff;
+$light: #6690FF;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+main {
+    height: 100vh;
+}
+
+.btn-lg {
+    width: 50px !important;
+}
+
+
