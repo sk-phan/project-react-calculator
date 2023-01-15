@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 const Calculator = () => {
     const [ result, setResult ] = useState<number>(0);
     const [ total, setTotal ] = useState<any>([]);
-
+    const [ resetStatus, setResetStatus ] = useState<boolean>(true);
+    
     const onCalculate = (num: any) => {
         
-        setTotal([...total, num])
-        console.log(total)
+        setTotal([...total, num]);
+        setResetStatus(false)
         
     }
 
@@ -22,7 +23,9 @@ const Calculator = () => {
         
     }, [total])
 
+
     const del = () => {
+        setResetStatus(true);
         if (typeof total[total.length - 1] === "number") {
             
          const currentNums = total.map((item: number, index: number) => {
@@ -31,9 +34,7 @@ const Calculator = () => {
             }
             else return item
          });
-         setTotal(currentNums);
-        console.log(currentNums)
-        
+         setTotal(currentNums);        
     }
     }
 
@@ -44,7 +45,7 @@ const Calculator = () => {
 
     return (
         <div className=" d-flex flex-column bg-primary p-4 rounded">  
-            <div className="bg-white p-4 mb-4 rounded"> { result } </div>
+            <div className="bg-white p-4 mb-4 rounded text-right"> { result } </div>
 
             <div className="row mb-2">
                 <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(7)}> 7 </button>
@@ -68,10 +69,15 @@ const Calculator = () => {
             </div>
 
             <div className="row mb-2">
-                <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => del()}> C </button>
+                { resetStatus 
+                    ? <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => reset()}> AC </button>
+                    : <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => del()} > C </button>
+                }
                 <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate(0)}> 0 </button>
                 <button className="col mx-2 btn btn-lg text-white bg-dark" onClick={() => onCalculate('.')}> . </button>
                 <button className="col mx-2 btn btn-lg bg-white" onClick={() => setResult(result)}> = </button>
+
+
             </div>
         </div>
     )
