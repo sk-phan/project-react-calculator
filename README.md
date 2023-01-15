@@ -6,4 +6,4 @@ To run the project in local environment
   - cd Code, run npm start
  
 # View it live ✨
-
+https://suki-calculator.netlify.app
